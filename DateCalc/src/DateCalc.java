@@ -1,7 +1,10 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
-
+/*
+ * Allows you to add and subtract days from the current date
+ * @author Sukhjinder Nahal
+ */
 
 
 public class DateCalc {
@@ -16,37 +19,43 @@ public class DateCalc {
 			Scanner keyboard = new Scanner(System.in);
 			String input = keyboard.next();
 			
-			
-			if(input.equalsIgnoreCase("A"))
+			while(!input.equalsIgnoreCase("e"))
 			{
-				System.out.println("How many days do you want to add");
-				days = keyboard.nextInt();
-				if(days>0 & days<=31)
+				
+				if(input.equalsIgnoreCase("A"))
 				{
-					String newDate = today.plusDays(days).format(DateTimeFormatter.ofPattern("MM/d/uuuu"));
-					System.out.println(newDate);
+					System.out.println("How many days do you want to add");
+					days = keyboard.nextInt();
+					if(days>0)
+					{
+						String newDate = today.plusDays(days).format(DateTimeFormatter.ofPattern("MM/d/uuuu"));
+						System.out.println(newDate);
+					}
+					else
+						System.out.println("Error: number of days cannot be negative");
+					
 				}
-			}
 		
-			if(input.equalsIgnoreCase("s"))
-			{
-				System.out.println("How many days do you want to subtract");
-				days = keyboard.nextInt();
-				if(days>0 & days<=31)
+				if(input.equalsIgnoreCase("s"))
 				{
-					String newDate = today.minusDays(days).format(DateTimeFormatter.ofPattern("MM/d/uuuu"));
-					System.out.println(newDate);
+					System.out.println("How many days do you want to subtract");
+					days = keyboard.nextInt();
+					if(days>0)
+					{
+						String newDate = today.minusDays(days).format(DateTimeFormatter.ofPattern("MM/d/uuuu"));
+						System.out.println(newDate);
+					}
+					else
+						System.out.println("Error: number of days cannot be negative");
 				}
+			
+				
+				System.out.println("Enter (a) to add days, (s) to subtract days, (e) to exit ");
+				input = keyboard.next();
+
 			}
 			
-			if(input.equalsIgnoreCase("e"))
-			{
-				System.out.println("Bye");
-			}
-			
-			
-			
-			
+			System.out.println("Bye");
 			
 			
 			
