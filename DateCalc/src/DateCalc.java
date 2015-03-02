@@ -6,13 +6,13 @@ import java.util.Scanner;
  * @author Sukhjinder Nahal
  */
 
-
 public class DateCalc {
 	
 		public static void main(String[] args) {
 			
 			LocalDate today = LocalDate.now();
 			System.out.println("Todays date is " + today.format(DateTimeFormatter.ofPattern("MM/d/uuuu")));
+			System.out.println("Day of week: " + today.getDayOfWeek() );
 			int days;
 			
 			System.out.println("Enter (a) to add days, (s) to subtract days, (e) to exit ");
@@ -28,8 +28,9 @@ public class DateCalc {
 					days = keyboard.nextInt();
 					if(days>0)
 					{
-						String newDate = today.plusDays(days).format(DateTimeFormatter.ofPattern("MM/d/uuuu"));
-						System.out.println(newDate);
+						today=today.plusDays(days);
+						System.out.println(today.format(DateTimeFormatter.ofPattern("MM/d/uuuu")));
+						System.out.println("Day of week: " + today.getDayOfWeek() );
 					}
 					else
 						System.out.println("Error: number of days cannot be negative");
@@ -42,8 +43,9 @@ public class DateCalc {
 					days = keyboard.nextInt();
 					if(days>0)
 					{
-						String newDate = today.minusDays(days).format(DateTimeFormatter.ofPattern("MM/d/uuuu"));
-						System.out.println(newDate);
+						today=today.minusDays(days);
+						System.out.println(today.format(DateTimeFormatter.ofPattern("MM/d/uuuu")));
+						System.out.println("Day of week: " + today.getDayOfWeek() );
 					}
 					else
 						System.out.println("Error: number of days cannot be negative");
@@ -56,9 +58,12 @@ public class DateCalc {
 			}
 			
 			System.out.println("Bye");
-			
-			
-			
+			keyboard.close();
 			
 		}
+			
+		
+		
+	
+		
 }
